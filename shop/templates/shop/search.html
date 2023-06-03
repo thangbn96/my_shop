@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% block register %}
+<div class="container">
+  <h5> Result search for {{searched}} </h5><br />
+  <div class="row">
+      {% for product in keys %}
+      <div class="col-lg-4">
+        <img class="thumbnail" src="{{product.ImageURL}}">
+        <div class="box-element product">
+          <h6><strong>{{product.name}}</strong></h6>
+          <hr>
+
+          <button data-product ={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart"> Add to Cart</button>
+          <a class="btn btn-outline-success" href="#">View</a>
+          <h6 style="display: inline-block; float: right"><strong>₩{{product.price | floatformat}}</strong></h6>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endblock register %}
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block banner_slider %}
+<div class="container">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="height: 400px;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_강아지튜브1.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_강아지튜브2.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_강아지튜브3.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+        </div>
+        <div class="carousel-caption d-none d-md-block bg-success text-white" style="height: 100px;">
+          <h5 style="color: white"><strong>강아지튜브</strong></h5>
+          <p>편안한 물놀이!!! 두꺼운 에어패딩 안전!!!</p>
+        </div>
+      </div>
+      <div class="carousel-item active" data-bs-interval="2000">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_베러굿즈 반려견 강아지공 장난감.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_베러굿즈 반려견 강아지공 장난감2.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+          <div class="col-md-4">
+            <img src="{% static 'shop/images/toy_베러굿즈 반려견 강아지공 장난감3.jpg' %}" class="d-block w-100" alt="First slide label" height="400">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+{% endblock banner_slider %}
+
+{% block main-content %}
+<div class="container">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-lg-4">
+      <img class="thumbnail" src="{{product.ImageURL}}">
+      <div class="box-element product">
+        <h6><strong>{{product.name}}</strong></h6>
+        <hr>
+
+        <button data-product ={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart"> Add to Cart</button>
+        <a class="btn btn-outline-success" href="{% url 'detail' %}?id={{product.id}}">View</a>
+        <h6 style="display: inline-block; float: right"><strong>₩{{product.price | floatformat}}</strong></h6>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<br /><br /><br />
+{% endblock main-content %}
